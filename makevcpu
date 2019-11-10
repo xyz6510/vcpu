@@ -15,7 +15,7 @@ PRG="prg02.c"
 
 cpp -fdirectives-only -fpreprocessed -P $PRG > /tmp/prg.cpp || exit 1
 ./labels > /dev/null || exit 1
-sed "s/^ *//;/^$/d" /run/prg.1 > /tmp/prg.c  || exit 1
+sed "s/^ *//;/^$/d" /tmp/prg.1 > /tmp/prg.c  || exit 1
 
 $GCC $WARN $OPTIM -s -o $OUT $FILES || exit 1
 $GCC $WARN $OPTIM -S -fverbose-asm $FILES -o asm.s || exit 1
