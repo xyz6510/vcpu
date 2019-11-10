@@ -1,0 +1,17 @@
+#!/bin/sh
+
+GCC=gcc
+
+FILES="labels.c"
+
+OUT="labels"
+
+WARN="-Werror -Wall -Wfatal-errors"
+
+OPTIM="-march=native -O3"
+
+PRG="prg08.c"
+
+cpp -fdirectives-only -fpreprocessed -P $PRG | sed "s/^[ ]*//" > /tmp/prg.cpp || exit 1
+
+$GCC $WARN $OPTIM -s -o $OUT $FILES || exit 1
